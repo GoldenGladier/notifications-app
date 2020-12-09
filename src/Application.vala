@@ -8,7 +8,7 @@ public class MyApp : Gtk.Application{
 
 protected override void activate () {
     var main_window = new Gtk.ApplicationWindow (this) {
-        title = "My title",
+        title = "Notification app",
         default_height = 500,
         default_width = 500
     };
@@ -23,6 +23,13 @@ protected override void activate () {
     grid.add (title_label);
     grid.add (show_button);
     grid.add (replace_button);
+
+    //  This is a badge
+    Granite.Services.Application.set_badge_visible.begin (true);
+    Granite.Services.Application.set_badge.begin (4);
+    //  This is a progress bar      
+    Granite.Services.Application.set_progress_visible.begin (true);
+    Granite.Services.Application.set_progress.begin (1f);
 
     main_window.add (grid);
 
